@@ -5,7 +5,7 @@ description = "Recursive Language Model (RLM) toolset for Pydantic AI - handle e
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
-authors = [{name = "RLM Pydantic AI Contributors"}]
+authors = [{name = "Pydantic AI RLM Contributors"}]
 keywords = [
     "pydantic",
     "pydantic-ai",
