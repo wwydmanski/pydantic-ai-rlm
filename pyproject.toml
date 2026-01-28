@@ -1,0 +1,92 @@
+[project]
+name = "pydantic-ai-rlm"
+version = "0.1.0"
+description = "Recursive Language Model (RLM) toolset for Pydantic AI - handle extremely large contexts"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{name = "RLM Pydantic AI Contributors"}]
+keywords = [
+    "pydantic",
+    "pydantic-ai",
+    "llm",
+    "ai",
+    "machine-learning",
+    "recursive",
+    "context",
+    "repl",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Typing :: Typed",
+]
+dependencies = ["pydantic-ai>=0.1.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "pytest-asyncio>=0.21", "mypy>=1.0", "ruff>=0.1"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pydantic_ai_rlm"]
+
+[dependency-groups]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "pre-commit>=4.0.0",
+    "ruff>=0.14.11",
+    "ty>=0.0.10",
+    "logfire",
+]
+
+
+# Ruff configuration
+[tool.ruff]
+line-length = 135
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C",   # flake8-comprehensions
+    "UP",  # pyupgrade (modern Python syntax)
+    "SIM", # flake8-simplify
+    "RUF", # Ruff-specific rules
+    "N",   # pep8-naming
+    "YTT", # flake8-2020
+    "A",   # flake8-builtins
+]
+
+[tool.ruff.lint.per-file-ignores]
+"src/pydantic_ai_rlm/prompts.py" = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = [
+    "my_project",
+] # Example: if your code is in src/my_projectme/
+combine-as-imports = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"
+docstring-code-format = true
+
+[tool.ty.rules]
+unresolved-import = "ignore"
+possibly-missing-attribute = "ignore"
